@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#box{
+				width:600px;
+				height:200px;
+				margin: 0 auto;
+				margin-top: 100px;
+				color: red;
+				background-color:wheat;
+				font-size: 50px;
+				text-align: center;
+				line-height: 200px;
+			}
+			#start{
+				width:100px;
+				height:100px;
+				background-color:pink;
+				margin-left:450px;
+				margin-top: 50px;
+				color: white;
+			}
+			#stop{
+				width:100px;
+				height:100px;
+				background-color:orange;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<button id="start">恢复<tton>
+		<button id="stop">停止<tton>
+		<script type="text/javascript">
+			var num;
+			function dingshi(){
+				num=setInterval(function() {
+					
+					var data = new Date()
+					var newData = new Date('1/1/2018')
+					var time = (newData - data) / 1000
+					var shi = parseInt(time % (60*60*24) / 60 /60)
+					if(shi<10){
+						shi = "0"+shi
+					}
+					var fen = parseInt(time % (60*60) / 60)
+					if(fen<10){
+						fen= "0"+fen
+					}
+					var miao = parseInt(time % 60)
+					if(miao<10){
+						miao = "0"+miao
+					}
+					box.innerHTML =shi + ':' + fen + ':' + miao
+				}, 100)
+			}
+			dingshi()
+			var stop = document.querySelector('#stop')
+			start.onclick = function(){
+				if(num==undefined){
+					dingshi()
+				}
+			}
+			stop.onclick=function(){
+				clearInterval(num)
+				num=undefined
+			}
+			
+		</script>
+	</body>
+<html>
